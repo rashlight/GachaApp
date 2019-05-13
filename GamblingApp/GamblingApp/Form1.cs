@@ -1,0 +1,265 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+
+namespace GamblingApp
+{
+    public partial class MainForm : Form
+    {
+        /// <summary>
+        /// Contain game mode infos
+        /// </summary>
+        public struct GameModeInfo
+        {
+            public string GameMode { get; }
+            public string RiskLevel { get; }
+            public string EntryPrice { get; }
+            public string Description { get; }
+
+            public GameModeInfo(string _GameMode, string _RiskLevel, string _EntryPrice, string _Description)
+            {
+                GameMode = _GameMode;
+                RiskLevel = _RiskLevel;
+                EntryPrice = _EntryPrice;
+                Description = _Description;
+            }
+        }
+
+        /// <summary>
+        /// Contains user info
+        /// </summary>
+        public struct UserInfo
+        {
+            public bool Activated { get; set; }
+            public string UserName { get; set; }
+            public BigInteger Point { get; set; }
+            public DateTime TimePlayed { get; set; }         
+
+            public UserInfo(bool _Activated, string _UserName, int _Point, DateTime _TimePlayed)
+            {
+                Activated = _Activated;
+                UserName = _UserName;
+                Point = _Point;
+                TimePlayed = _TimePlayed;
+            }
+
+            public void SetDefault()
+            {
+                Activated = false;
+                UserName = "<UNKNOWN>";
+                Point = BigInteger.MinusOne;
+                TimePlayed = DateTime.MinValue;
+            }
+
+            public void SetInfo(bool _Activated, string _UserName, int _Point, DateTime _TimePlayed)
+            {
+                Activated = _Activated;
+                UserName = _UserName;
+                Point = _Point;
+                TimePlayed = _TimePlayed;
+            }
+        }
+
+        public readonly string TITLE_PREFIX = "GamblingApp";
+        public const string USERNAME_PREFIX = "Username: ";
+        public const string GAMBLING_POINT_PREFIX = "Gambling Point: ";
+
+        public static UserInfo currentUser = new UserInfo();
+        public List<GameModeInfo> gameModes = new List<GameModeInfo>();
+
+        public void CloseAllButMainForm()
+        {
+            while (Application.OpenForms.Count > 1)
+            {
+                Application.OpenForms[1].Close();
+            }
+        }
+
+        public Form GetSameFormInstance(Form form)
+        {
+            FormCollection fc = Application.OpenForms;
+
+            foreach (Form checkingForm in fc)
+            {
+                if (form.GetType() == checkingForm.GetType()) return checkingForm;
+            }
+
+            return null;
+        }
+
+        public void UpdateUserInfo()
+        {
+            userNameTextBox.Text = USERNAME_PREFIX + currentUser.UserName;
+            gamblingPointTextBox.Text = GAMBLING_POINT_PREFIX + currentUser.Point.ToString();
+        }
+
+        public MainForm()
+        {
+            InitializeComponent();         
+        }  
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            #region Game modes initialization
+
+            gameModeListBox.Items.Clear();
+            gameModes.Add(new GameModeInfo("Faucet", "0", "0", "Get free points here!"));
+            gameModes.Add(new GameModeInfo("Timer", "3", "10", "The more you wait, more risk you bears."));
+            gameModes.Add(new GameModeInfo("Color Picker", "2", "15", "Choose a color. Distance will be your might."));
+
+            foreach (var _GameModeInfo in gameModes)
+            {
+                gameModeListBox.Items.Add(_GameModeInfo.GameMode);
+            }
+
+            #endregion
+            #region User setup
+            currentUser.SetDefault();
+            #endregion
+            #region UI Setup
+            UpdateUserInfo();
+            #endregion
+
+            currentUser.Activated = true;
+            currentUser.Point = int.MaxValue;
+            UpdateUserInfo();
+        }
+
+        private void playGameButton_Click(object sender, EventArgs e)
+        {
+            if (!currentUser.Activated || currentUser.Point < 0)
+            {
+                MessageBox.Show("User error! Please log in...", "No user logon.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (gameModeListBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Choose any game first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            switch (gameModeListBox.SelectedIndex)
+            {
+                case 0:
+                {
+                    FaucetForm ff = new FaucetForm(this);
+                    if (GetSameFormInstance(ff) != null)
+                    {
+                        GetSameFormInstance(ff).Focus();
+                        ff.Dispose();
+                    }
+                    else ff.Show();
+                    break;
+                }
+                case 1:
+                {
+                    CrashForm cf = new CrashForm(this);
+                    if (GetSameFormInstance(cf) != null)
+                    {
+                        GetSameFormInstance(cf).Focus();
+                        cf.Dispose();
+                    }
+                    else cf.Show();
+                    break;
+                }
+                default: throw new AccessViolationException("How's that possible?");
+            }          
+        }
+
+        private void gameModeListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            descriptionTextBox.Text = gameModes[gameModeListBox.SelectedIndex].Description;
+            riskLevelLabel.Text = gameModes[gameModeListBox.SelectedIndex].RiskLevel;
+        }
+
+        private void userNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!currentUser.Activated) userNameTextBox.ForeColor = Color.OrangeRed;
+            else userNameTextBox.ForeColor = Color.Black;
+        }
+
+        private void gamblingPointTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentUser.Point < 0) gamblingPointTextBox.ForeColor = Color.OrangeRed;
+            else userNameTextBox.ForeColor = Color.Black;
+        }
+
+        private void createsaveFileButton_Click(object sender, EventArgs e)
+        {
+            string userCrationPrefix = "Saved user: ";
+
+            DialogResult dg = saveFileDialog.ShowDialog();
+            if (dg == DialogResult.Cancel) return;
+
+            if (!currentUser.Activated)
+            {
+                currentUser.UserName = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
+                currentUser.Point = 0;
+                currentUser.Activated = true;
+                currentUser.TimePlayed = DateTime.UtcNow;
+                userCrationPrefix = "Created user: ";
+            }
+
+            try
+            {
+                CloseAllButMainForm();
+                string encrypted = GamblingApp.Encrypt.EncryptString(
+                currentUser.Activated + "\r\n" + currentUser.UserName + "\r\n" + currentUser.Point + "\r\n" + currentUser.TimePlayed,
+                GamblingClass.THE_KEY);
+                //MessageBox.Show(GamblingApp.Encrypt.DecryptString(encrypted, GamblingApp.GamblingClass.THE_KEY));
+                File.WriteAllText(saveFileDialog.FileName, encrypted.ToString(), Encoding.UTF8);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Error! - " + exp.ToString());
+                MessageBox.Show("User creation / saving failed. Reason: " + exp.Message, "Error! " + exp.HResult, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                currentUser.SetDefault();
+            }     
+            finally
+            {
+                UpdateUserInfo();
+            }
+            Console.WriteLine(userCrationPrefix + currentUser.UserName);
+        }
+
+        private void openSaveFileButton_Click(object sender, EventArgs e)
+        {
+            string fileContent = string.Empty;
+            DialogResult dg = openFileDialog.ShowDialog();
+            if (dg == DialogResult.Cancel) return;
+            try
+            {
+                CloseAllButMainForm();
+                var stream = openFileDialog.OpenFile();
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    fileContent = GamblingApp.Encrypt.DecryptString(reader.ReadToEnd(), GamblingApp.GamblingClass.THE_KEY);
+                }
+                string[] info = Regex.Split(fileContent, "\r\n");
+                currentUser.Activated = Convert.ToBoolean(info[0]);
+                currentUser.UserName = info[1];
+                currentUser.Point = BigInteger.Parse(info[2]);
+                currentUser.TimePlayed = Convert.ToDateTime(info[3]);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("Error! - " + exp.ToString());
+                MessageBox.Show("User loading failed. Reason: " + exp.Message, "Error! " + exp.HResult, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                currentUser.SetDefault();
+                return;
+            }
+            Console.WriteLine("Loaded user: " + currentUser.UserName);
+            UpdateUserInfo();
+        }
+    }
+}

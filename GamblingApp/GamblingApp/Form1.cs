@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
 
 namespace GamblingApp
 {
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Contain game mode infos
+        /// Contains game mode infos
         /// </summary>
         public struct GameModeInfo
         {
@@ -35,7 +29,6 @@ namespace GamblingApp
                 Description = _Description;
             }
         }
-
         /// <summary>
         /// Contains user info
         /// </summary>
@@ -56,10 +49,10 @@ namespace GamblingApp
 
             public void SetDefault()
             {
-                Activated = false;
-                UserName = "<UNKNOWN>";
-                Point = BigInteger.MinusOne;
-                TimePlayed = DateTime.MinValue;
+                Activated = true;
+                UserName = "Guest";
+                Point = BigInteger.Zero;
+                TimePlayed = DateTime.Now;
             }
 
             public void SetInfo(bool _Activated, string _UserName, int _Point, DateTime _TimePlayed)
@@ -85,7 +78,6 @@ namespace GamblingApp
                 Application.OpenForms[1].Close();
             }
         }
-
         public Form GetSameFormInstance(Form form)
         {
             FormCollection fc = Application.OpenForms;
@@ -97,46 +89,7 @@ namespace GamblingApp
 
             return null;
         }
-
-        public void UpdateUserInfo()
-        {
-            userNameTextBox.Text = USERNAME_PREFIX + currentUser.UserName;
-            gamblingPointTextBox.Text = GAMBLING_POINT_PREFIX + currentUser.Point.ToString();
-        }
-
-        public MainForm()
-        {
-            InitializeComponent();         
-        }  
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            #region Game modes initialization
-
-            gameModeListBox.Items.Clear();
-            gameModes.Add(new GameModeInfo("Faucet", "0", "0", "Get free points here!"));
-            gameModes.Add(new GameModeInfo("Timer", "3", "10", "The more you wait, more risk you bears."));
-            gameModes.Add(new GameModeInfo("Color Picker", "2", "15", "Choose a color. Distance will be your might."));
-
-            foreach (var _GameModeInfo in gameModes)
-            {
-                gameModeListBox.Items.Add(_GameModeInfo.GameMode);
-            }
-
-            #endregion
-            #region User setup
-            currentUser.SetDefault();
-            #endregion
-            #region UI Setup
-            UpdateUserInfo();
-            #endregion
-
-            currentUser.Activated = true;
-            currentUser.Point = int.MaxValue;
-            UpdateUserInfo();
-        }
-
-        private void playGameButton_Click(object sender, EventArgs e)
+        public void OpenGameForm()
         {
             if (!currentUser.Activated || currentUser.Point < 0)
             {
@@ -172,28 +125,90 @@ namespace GamblingApp
                     else cf.Show();
                     break;
                 }
+                case 2:
+                {
+                    ColorPicker cp = new ColorPicker(this);
+                    if (GetSameFormInstance(cp) != null)
+                    {
+                        GetSameFormInstance(cp).Focus();
+                        cp = null;
+                        cp.Dispose();
+                    }
+                    else cp.Show();
+                    break;
+                }
                 default: throw new AccessViolationException("How's that possible?");
             }          
         }
-
-        private void gameModeListBox_SelectedValueChanged(object sender, EventArgs e)
+        public void UpdateUserInfo()
         {
+            userNameTextBox.Text = USERNAME_PREFIX + currentUser.UserName;
+            gamblingPointTextBox.Text = GAMBLING_POINT_PREFIX + currentUser.Point.ToString();
+
+            if (currentUser.Activated)
+            {
+                userNameTextBox.ForeColor = Color.Black;
+                gamblingPointTextBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                userNameTextBox.ForeColor = Color.Tomato;
+                gamblingPointTextBox.ForeColor = Color.Tomato;
+            }
+        }
+
+        public MainForm()
+        {
+            InitializeComponent();         
+        }  
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            #region Game modes initialization
+
+            gameModeListBox.Items.Clear();
+            gameModes.Add(new GameModeInfo("Faucet", "0", "0", "Get free points here!"));
+            gameModes.Add(new GameModeInfo("Crash", "3", "10", "The more you wait, more risk you bears."));
+            gameModes.Add(new GameModeInfo("Color Picker", "2", "15", "Choose a color. Distance will be your might."));
+
+            foreach (var _GameModeInfo in gameModes)
+            {
+                gameModeListBox.Items.Add(_GameModeInfo.GameMode);
+            }
+
+            #endregion
+            #region User setup
+
+            currentUser.SetDefault();
+
+            #endregion
+            #region UI Setup
+
+            welcomeTextBox.Text = "Welcome back, " + Environment.UserName + "!";
+            UpdateUserInfo();
+
+            #endregion
+        }
+        private void playGameButton_Click(object sender, EventArgs e)
+        {
+            OpenGameForm();
+        }
+        private void gameModeListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gameModeListBox.SelectedIndex < 0) return;
             descriptionTextBox.Text = gameModes[gameModeListBox.SelectedIndex].Description;
             riskLevelLabel.Text = gameModes[gameModeListBox.SelectedIndex].RiskLevel;
         }
-
         private void userNameTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!currentUser.Activated) userNameTextBox.ForeColor = Color.OrangeRed;
             else userNameTextBox.ForeColor = Color.Black;
         }
-
         private void gamblingPointTextBox_TextChanged(object sender, EventArgs e)
         {
             if (currentUser.Point < 0) gamblingPointTextBox.ForeColor = Color.OrangeRed;
             else userNameTextBox.ForeColor = Color.Black;
         }
-
         private void createsaveFileButton_Click(object sender, EventArgs e)
         {
             string userCrationPrefix = "Saved user: ";
@@ -231,7 +246,6 @@ namespace GamblingApp
             }
             Console.WriteLine(userCrationPrefix + currentUser.UserName);
         }
-
         private void openSaveFileButton_Click(object sender, EventArgs e)
         {
             string fileContent = string.Empty;
@@ -260,6 +274,23 @@ namespace GamblingApp
             }
             Console.WriteLine("Loaded user: " + currentUser.UserName);
             UpdateUserInfo();
+        }
+        private void gameModeListBox_DoubleClick(object sender, EventArgs e)
+        {
+            OpenGameForm();
+        }
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
+        private void gamblingAppFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            createsaveFileButton_Click(null, new EventArgs());
+        }
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openSaveFileButton_Click(null, new EventArgs());
         }
     }
 }

@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,7 +27,7 @@ namespace GamblingApp
         private MainForm mainForm = null;
         private List<PriceDictionary> priceLookup = new List<PriceDictionary>();
         public int plusPrice = 1;
-        public bool isPlaying = false;
+        public static bool isPlaying;
         public bool isLarger = false;     
 
         public FaucetForm(Form callbackForm)
@@ -84,12 +78,10 @@ namespace GamblingApp
             tenThousandsPrefixTextBox.Text = strNumber[1].ToString();
             hundredThousandsPrefixTextBox.Text = strNumber[0].ToString();         
         }
-
         private void PlusRateUpdateUI()
         {
             plusRateTextBox.Text = plusPrice + " / ~" + rate;
         }
-
         private async void faucetRollButton_Click(object sender, EventArgs e)
         {
             unitPrefixTextBox.Text = "0";
@@ -107,7 +99,7 @@ namespace GamblingApp
             {
                 chosenNumber += GamblingClass.Random(0, 250, 750);
                 FaucetUpdateUI(chosenNumber);
-                await Task.Delay(25);
+                await Task.Delay(25).ConfigureAwait(true);
                 if (GamblingClass.Random(0, 1, 999999) > (999999 - chosenNumber / rate) || chosenNumber > 999999) isPlaying = false;
             }
             plusPrice = 1;
@@ -121,7 +113,6 @@ namespace GamblingApp
             faucetRollButton.Enabled = true;
             plusRateButton.Enabled = true;
         }
-
         private void plusRateButton_Click(object sender, EventArgs e)
         {
             if (MainForm.currentUser.Point - plusPrice < 0)
@@ -141,6 +132,14 @@ namespace GamblingApp
             rate += price;
             PlusRateUpdateUI();
             mainForm.UpdateUserInfo();
+        }
+        private void FaucetForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isPlaying)
+            {
+                DialogResult dg = MessageBox.Show("If you close this game, all of your points will be lost.\nContinue?", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (dg != DialogResult.OK) e.Cancel = true;
+            }
         }
     }
 }

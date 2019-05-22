@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,7 +17,7 @@ namespace GamblingApp
         private MainForm mainForm = null;
         private float crashMultiplier = 0.00f;
         private float checkpointMultipier = 0.00f;
-        private bool isPlaying = false;
+        public static bool isPlaying;
 
         public CrashForm(Form callbackForm)
         {
@@ -35,13 +29,11 @@ namespace GamblingApp
         {
             crashChart.Series[0].Points.Add((int)Math.Round(checkpointMultipier / toCompared * 100));
         }
-
         private void ChangeCrashMultiplier(float value)
         {
             crashMultiplier = (float)Math.Round(value, 2);
             crashMultiplierTextBox.Text = value.ToString() + CRASH_MULTIPIER_PREFIX;
         }
-
         private void ChangeStatus()
         {
             int status = -1;
@@ -81,7 +73,6 @@ namespace GamblingApp
                 }
             }
         }
-
         private void UpdateMaxMultiplier()
         {
             if (!int.TryParse(betNumeric.Text, out int result)) return;
@@ -92,7 +83,6 @@ namespace GamblingApp
         private async void crashButton_Click(object sender, EventArgs e)
         {
             bool result = double.TryParse(maxMultiplierTextBox.Text.Replace(CRASH_MULTIPIER_PREFIX, string.Empty), out double mul);
-            float predictedValue = Convert.ToSingle(Math.Round(GamblingClass.rand.NextDouble() * mul, 2));
 
             if (!result)
             {
@@ -126,13 +116,13 @@ namespace GamblingApp
 
             // Game behavior
             isPlaying = true;
-            int quickTimer = 350;
+            int quickTimer = 300;
             while (isPlaying)
             {
-                await Task.Delay(quickTimer);
+                await Task.Delay(quickTimer).ConfigureAwait(true);
                 if (quickTimer > 1) quickTimer--;
                 ChangeCrashMultiplier(crashMultiplier + 0.01f);
-                if (crashMultiplier >= predictedValue)
+                if (1 == GamblingClass.Random(0, 1, 100) || crashMultiplier + CRASH_MULTIPIER_PREFIX == maxMultiplierTextBox.Text)
                 {
                     isPlaying = false;
                     crashMultiplierTextBox.ForeColor = Color.Tomato;
@@ -148,9 +138,8 @@ namespace GamblingApp
             }
 
             mainForm.UpdateUserInfo();
-            AddRatioDataPoint(predictedValue);
+            AddRatioDataPoint(crashMultiplier);
         }
-
         private void betNumeric_TextChanged(object sender, EventArgs e)
         {
             if (!int.TryParse(betNumeric.Text, out int result))
@@ -160,7 +149,6 @@ namespace GamblingApp
             if (result <= 0) maxMultiplierTextBox.Text = "0" + CRASH_MULTIPIER_PREFIX;
             UpdateMaxMultiplier();
         }
-
         private void stopButton_Click(object sender, EventArgs e)
         {
             crashButton.Enabled = false;
@@ -169,6 +157,14 @@ namespace GamblingApp
             stopButton.Visible = false;
             checkpointMultipier = crashMultiplier;
             ChangeStatus();
+        }
+        private void CrashForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isPlaying)
+            {
+                DialogResult dg = MessageBox.Show("If you close this game, all of your points will be lost.\nContinue?", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (dg != DialogResult.OK) e.Cancel = true;
+            }
         }
     }
 }

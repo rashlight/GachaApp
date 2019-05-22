@@ -37,7 +37,6 @@
             this.hundredPrefixTextBox = new System.Windows.Forms.TextBox();
             this.thousandPrefixTextBox = new System.Windows.Forms.TextBox();
             this.tenThousandsPrefixTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.plusRateButton = new System.Windows.Forms.Button();
             this.plusRateTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -62,9 +61,9 @@
             "985001 - 990001: 45gp",
             "990001 - 999999: 50gp",
             "1000000: ???"});
-            this.checkedListBox1.Location = new System.Drawing.Point(37, 86);
+            this.checkedListBox1.Location = new System.Drawing.Point(37, 63);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(450, 211);
+            this.checkedListBox1.Size = new System.Drawing.Size(450, 234);
             this.checkedListBox1.TabIndex = 21;
             this.checkedListBox1.ThreeDCheckBoxes = true;
             this.checkedListBox1.UseCompatibleTextRendering = true;
@@ -164,15 +163,6 @@
             this.tenThousandsPrefixTextBox.Text = "0";
             this.tenThousandsPrefixTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(13, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(502, 15);
-            this.textBox1.TabIndex = 22;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // plusRateButton
             // 
             this.plusRateButton.Location = new System.Drawing.Point(8, 405);
@@ -190,6 +180,7 @@
             this.plusRateTextBox.Font = new System.Drawing.Font("Roboto Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.plusRateTextBox.Location = new System.Drawing.Point(8, 433);
             this.plusRateTextBox.Name = "plusRateTextBox";
+            this.plusRateTextBox.ReadOnly = true;
             this.plusRateTextBox.Size = new System.Drawing.Size(99, 16);
             this.plusRateTextBox.TabIndex = 24;
             this.plusRateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -202,7 +193,6 @@
             this.ClientSize = new System.Drawing.Size(526, 477);
             this.Controls.Add(this.plusRateTextBox);
             this.Controls.Add(this.plusRateButton);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.faucetRollButton);
             this.Controls.Add(this.label1);
@@ -212,8 +202,10 @@
             this.Controls.Add(this.hundredPrefixTextBox);
             this.Controls.Add(this.thousandPrefixTextBox);
             this.Controls.Add(this.tenThousandsPrefixTextBox);
+            this.MaximizeBox = false;
             this.Name = "FaucetForm";
-            this.Text = "Faucet";
+            this.Text = "Faucet game";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FaucetForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,7 +222,6 @@
         private System.Windows.Forms.TextBox hundredPrefixTextBox;
         private System.Windows.Forms.TextBox thousandPrefixTextBox;
         private System.Windows.Forms.TextBox tenThousandsPrefixTextBox;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button plusRateButton;
         private System.Windows.Forms.TextBox plusRateTextBox;
     }

@@ -51,6 +51,7 @@
             this.crashMultiplierTextBox.Font = new System.Drawing.Font("Century Gothic", 31.8F);
             this.crashMultiplierTextBox.Location = new System.Drawing.Point(12, 52);
             this.crashMultiplierTextBox.Name = "crashMultiplierTextBox";
+            this.crashMultiplierTextBox.ReadOnly = true;
             this.crashMultiplierTextBox.Size = new System.Drawing.Size(603, 65);
             this.crashMultiplierTextBox.TabIndex = 0;
             this.crashMultiplierTextBox.Tag = "";
@@ -64,6 +65,7 @@
             this.crashStatusTextBox.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.crashStatusTextBox.Location = new System.Drawing.Point(12, 123);
             this.crashStatusTextBox.Name = "crashStatusTextBox";
+            this.crashStatusTextBox.ReadOnly = true;
             this.crashStatusTextBox.Size = new System.Drawing.Size(603, 41);
             this.crashStatusTextBox.TabIndex = 1;
             this.crashStatusTextBox.Text = "Stopped at 0.00x";
@@ -150,6 +152,8 @@
             // 
             // crashChart
             // 
+            this.crashChart.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.crashChart.BorderlineColor = System.Drawing.Color.WhiteSmoke;
             chartArea1.Name = "ChartArea1";
             this.crashChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -159,11 +163,12 @@
             this.crashChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "CrashSeries";
+            series1.Name = "Accuracy";
             this.crashChart.Series.Add(series1);
             this.crashChart.Size = new System.Drawing.Size(593, 231);
             this.crashChart.TabIndex = 31;
-            this.crashChart.Text = "chart1";
+            this.crashChart.Text = "chart";
+            this.crashChart.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.SystemDefault;
             // 
             // CrashForm
             // 
@@ -181,8 +186,10 @@
             this.Controls.Add(this.crashButton);
             this.Controls.Add(this.crashStatusTextBox);
             this.Controls.Add(this.crashMultiplierTextBox);
+            this.MaximizeBox = false;
             this.Name = "CrashForm";
-            this.Text = "Crash";
+            this.Text = "Crash game";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CrashForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.crashChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

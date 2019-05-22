@@ -100,7 +100,10 @@ namespace GamblingApp
                 chosenNumber += GamblingClass.Random(0, 250, 750);
                 FaucetUpdateUI(chosenNumber);
                 await Task.Delay(25).ConfigureAwait(true);
-                if (GamblingClass.Random(0, 1, 999999) > (999999 - chosenNumber / rate) || chosenNumber > 999999) isPlaying = false;
+                if (GamblingClass.Random(0, 1, 999999) > (999999 - chosenNumber / rate) || chosenNumber > 999999)
+                {
+                    isPlaying = false;
+                }
             }
             plusPrice = 1;
             rate = DEFAULT_RATE;
@@ -141,7 +144,10 @@ namespace GamblingApp
             if (isPlaying)
             {
                 DialogResult dg = MessageBox.Show("If you close this game, all of your points will be lost.\nContinue?", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (dg != DialogResult.OK) e.Cancel = true;
+                if (dg != DialogResult.OK)
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }

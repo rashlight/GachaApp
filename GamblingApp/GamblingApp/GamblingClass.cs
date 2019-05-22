@@ -11,21 +11,21 @@ using Anemonis.RandomOrg;
 
 namespace GamblingApp
 {
-    public class GamblingClass
+    public static class GamblingClass
     {
 
-        public const string THE_KEY = "AnotherCheater";
-        public const int RANDOM_ORDINARY = 0;
-        public const int RANDOM_CRYPTO = 1;
-        public const int RANDOM_REALISTIC = 2;
+        public static readonly string THE_KEY = "AnotherCheater";
+        public static readonly int RANDOM_ORDINARY = 0;
+        public static readonly int RANDOM_CRYPTO = 1;
+        public static readonly int RANDOM_REALISTIC = 2;
 
         public static int ToInt(bool value)
         {
             return value ? 1 : 0;
         }
 
-        public static Random rand = new Random();
-        public static RandomNumberGenerator Rand;
+        public static readonly Random rand = new Random();
+        public static readonly RandomNumberGenerator Rand;
 
         public static int Random(int mode, int min, int max)
         {

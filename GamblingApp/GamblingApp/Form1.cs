@@ -64,27 +64,30 @@ namespace GamblingApp
             }
         }
 
-        public readonly string TITLE_PREFIX = "GamblingApp";
-        public const string USERNAME_PREFIX = "Username: ";
-        public const string GAMBLING_POINT_PREFIX = "Gambling Point: ";
-        public UserInfo currentUser = new UserInfo();
+        public static readonly string TITLE_PREFIX = "GamblingApp";
+        public static readonly string USERNAME_PREFIX = "Username: ";
+        public static readonly string GAMBLING_POINT_PREFIX = "Gambling Point: ";
+        public static UserInfo currentUser = new UserInfo();
 
-        private List<GameModeInfo> gameModes = new List<GameModeInfo>();
+        private readonly List<GameModeInfo> gameModes = new List<GameModeInfo>();
 
-        public void CloseAllButMainForm()
+        public static void CloseAllButMainForm()
         {
             while (Application.OpenForms.Count > 1)
             {
                 Application.OpenForms[1].Close();
             }
         }
-        public Form GetSameFormInstance(Form form)
+        public static Form GetSameFormInstance(Form form)
         {
             FormCollection fc = Application.OpenForms;
 
             foreach (Form checkingForm in fc)
             {
-                if (form.GetType() == checkingForm.GetType()) return checkingForm;
+                if (form.GetType() == checkingForm.GetType())
+                {
+                    return checkingForm;
+                }
             }
 
             return null;
@@ -111,7 +114,10 @@ namespace GamblingApp
                         GetSameFormInstance(ff).Focus();
                         ff.Dispose();
                     }
-                    else ff.Show();
+                    else
+                    {
+                        ff.Show();
+                    }
                     break;
                 }
                 case 1:
@@ -122,7 +128,10 @@ namespace GamblingApp
                         GetSameFormInstance(cf).Focus();
                         cf.Dispose();
                     }
-                    else cf.Show();
+                    else
+                    {
+                        cf.Show();
+                    }
                     break;
                 }
                 case 2:
@@ -134,7 +143,10 @@ namespace GamblingApp
                         cp = null;
                         cp.Dispose();
                     }
-                    else cp.Show();
+                    else
+                    { 
+                        cp.Show();
+                    }
                     break;
                 }
                 default: throw new AccessViolationException("How's that possible?");
@@ -201,8 +213,14 @@ namespace GamblingApp
         }
         private void userNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!currentUser.Activated) userNameTextBox.ForeColor = Color.OrangeRed;
-            else userNameTextBox.ForeColor = Color.Black;
+            if (!currentUser.Activated)
+            {
+                userNameTextBox.ForeColor = Color.OrangeRed;
+            }
+            else
+            {
+                userNameTextBox.ForeColor = Color.Black;
+            }
         }
         private void gamblingPointTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -234,12 +252,11 @@ namespace GamblingApp
                 string encrypted = GamblingApp.Encrypt.EncryptString(
                 currentUser.Activated + "\r\n" + currentUser.UserName + "\r\n" + currentUser.Point + "\r\n" + currentUser.TimePlayed,
                 GamblingClass.THE_KEY);
-                //MessageBox.Show(GamblingApp.Encrypt.DecryptString(encrypted, GamblingApp.GamblingClass.THE_KEY));
                 File.WriteAllText(saveFileDialog.FileName, encrypted.ToString(), Encoding.UTF8);
             }
             catch (Exception exp)
             {
-                Console.WriteLine("Error! - " + exp.ToString());
+                Console.WriteLine("Error! - " + exp);
                 MessageBox.Show("User creation / saving failed. Reason: " + exp.Message, "Error! " + exp.HResult, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 currentUser.SetDefault();
             }     

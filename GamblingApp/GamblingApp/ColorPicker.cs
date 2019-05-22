@@ -14,13 +14,13 @@ namespace GamblingApp
     public partial class ColorPicker : Form
     {
         public static readonly string COLOR_ACCURACY_PREFIX = "∓";
-        public const string MULTIPLIER_PREFIX = "x";
+        public static readonly string MULTIPLIER_PREFIX = "x";
 
         public float betMultiplier = 1f;
-        public bool isColorPicked;
         public bool isPlaying;
-        private bool isPlayerColorSpecial;
-        private MainForm mainForm = null;
+        public bool isColorPicked;
+        public bool isPlayerColorSpecial;
+        private MainForm mainForm;
 
         public ColorPicker(Form callbackForm)
         {
@@ -173,7 +173,10 @@ namespace GamblingApp
         private void multiplierNumeric_ValueChanged(object sender, EventArgs e)
         {
             betMultiplier = (float)Math.Round(1.0m + (1.0m - multiplierNumeric.Value / 255m), 2);
-            if (isPlayerColorSpecial) betMultiplier += 1f;
+            if (isPlayerColorSpecial)
+            {
+                betMultiplier += 1f;
+            }
             rollColorButton.Text = "Roll! (" + betMultiplier + "x)";
         }
 
@@ -182,7 +185,11 @@ namespace GamblingApp
             if (isPlaying)
             {
                 DialogResult dg = MessageBox.Show("If you close this game, all of your points will be lost.\nContinue?", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (dg != DialogResult.OK) e.Cancel = true;
+                if (dg != DialogResult.OK)
+                {
+                    e.Cancel = true;
+
+                }
             }
         }
     }

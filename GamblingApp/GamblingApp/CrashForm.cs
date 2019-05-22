@@ -7,17 +7,17 @@ namespace GamblingApp
 {
     public partial class CrashForm : Form
     {
-        private const string START_AT_PREFIX = "Started at ";
-        private const string STOP_AT_PREFIX = "Stopped at ";
-        private const string CRASH_MULTIPIER_PREFIX = "x";
+        private static readonly string START_AT_PREFIX = "Started at ";
+        private static readonly string STOP_AT_PREFIX = "Stopped at ";
+        private static readonly string CRASH_MULTIPIER_PREFIX = "x";
         private const int STATUS_NEUTRAL = 0;
         private const int STATUS_LOST_STOPPED = 1;
         private const int STATUS_PROFIT_STOPPED = 2;
 
         private MainForm mainForm = null;
-        private float crashMultiplier = 0.00f;
+        private float crashMultiplier;
         private float checkpointMultipier;
-        public static bool isPlaying;
+        public bool isPlaying;
 
         public CrashForm(Form callbackForm)
         {
@@ -84,8 +84,14 @@ namespace GamblingApp
         }
         private void UpdateMaxMultiplier()
         {
-            if (!int.TryParse(betNumeric.Text, out int result)) return;
-            if (result <= 0) maxMultiplierTextBox.Text = "0" + CRASH_MULTIPIER_PREFIX;
+            if (!int.TryParse(betNumeric.Text, out int result))
+            {
+                return;
+            }          
+            if (result <= 0)
+            {
+                maxMultiplierTextBox.Text = "0" + CRASH_MULTIPIER_PREFIX;
+            } 
             else maxMultiplierTextBox.Text = (result / 10f + 9.9f) + CRASH_MULTIPIER_PREFIX;
         }
 
@@ -172,7 +178,10 @@ namespace GamblingApp
             if (isPlaying)
             {
                 DialogResult dg = MessageBox.Show("If you close this game, all of your points will be lost.\nContinue?", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (dg != DialogResult.OK) e.Cancel = true;
+                if (dg != DialogResult.OK)
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }

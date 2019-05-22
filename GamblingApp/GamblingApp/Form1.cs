@@ -67,9 +67,9 @@ namespace GamblingApp
         public readonly string TITLE_PREFIX = "GamblingApp";
         public const string USERNAME_PREFIX = "Username: ";
         public const string GAMBLING_POINT_PREFIX = "Gambling Point: ";
+        public UserInfo currentUser = new UserInfo();
 
-        public static UserInfo currentUser = new UserInfo();
-        public List<GameModeInfo> gameModes = new List<GameModeInfo>();
+        private List<GameModeInfo> gameModes = new List<GameModeInfo>();
 
         public void CloseAllButMainForm()
         {
@@ -206,7 +206,10 @@ namespace GamblingApp
         }
         private void gamblingPointTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (currentUser.Point < 0) gamblingPointTextBox.ForeColor = Color.OrangeRed;
+            if (currentUser.Point < 0)
+            {
+                gamblingPointTextBox.ForeColor = Color.OrangeRed;
+            } 
             else userNameTextBox.ForeColor = Color.Black;
         }
         private void createsaveFileButton_Click(object sender, EventArgs e)
@@ -250,7 +253,10 @@ namespace GamblingApp
         {
             string fileContent = string.Empty;
             DialogResult dg = openFileDialog.ShowDialog();
-            if (dg == DialogResult.Cancel) return;
+            if (dg == DialogResult.Cancel)
+            {
+                return;
+            }
             try
             {
                 CloseAllButMainForm();
@@ -267,7 +273,7 @@ namespace GamblingApp
             }
             catch (Exception exp)
             {
-                Console.WriteLine("Error! - " + exp.ToString());
+                Console.WriteLine("Error! - " + exp);
                 MessageBox.Show("User loading failed. Reason: " + exp.Message, "Error! " + exp.HResult, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 currentUser.SetDefault();
                 return;

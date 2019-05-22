@@ -13,13 +13,13 @@ namespace GamblingApp
 {
     public partial class ColorPicker : Form
     {
-        public const string COLOR_ACCURACY_PREFIX = "∓";
+        public static readonly string COLOR_ACCURACY_PREFIX = "∓";
         public const string MULTIPLIER_PREFIX = "x";
 
         public float betMultiplier = 1f;
         public bool isColorPicked;
-        public bool isPlayerColorSpecial;
-        public static bool isPlaying;
+        public bool isPlaying;
+        private bool isPlayerColorSpecial;
         private MainForm mainForm = null;
 
         public ColorPicker(Form callbackForm)

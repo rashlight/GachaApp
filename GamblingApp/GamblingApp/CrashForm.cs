@@ -16,7 +16,7 @@ namespace GamblingApp
 
         private MainForm mainForm = null;
         private float crashMultiplier = 0.00f;
-        private float checkpointMultipier = 0.00f;
+        private float checkpointMultipier;
         public static bool isPlaying;
 
         public CrashForm(Form callbackForm)
@@ -38,25 +38,34 @@ namespace GamblingApp
         {
             int status = -1;
 
-            if (checkpointMultipier > 1f) status = STATUS_PROFIT_STOPPED;
-            if (checkpointMultipier == 1f) status = STATUS_NEUTRAL;
-            if (0f < checkpointMultipier && checkpointMultipier < 1f) status = STATUS_LOST_STOPPED;
+            if (checkpointMultipier > 1f)
+            {
+                status = STATUS_PROFIT_STOPPED;
+            }
+            if (checkpointMultipier == 1f)
+            {
+                status = STATUS_NEUTRAL;
+            }
+            if (0f < checkpointMultipier && checkpointMultipier < 1f)
+            {
+                status = STATUS_LOST_STOPPED;
+            } 
 
             switch (status)
             {
-                case 0:
+                case STATUS_NEUTRAL:
                 {
                     crashStatusTextBox.ForeColor = Color.Gray;
                     crashStatusTextBox.Text = "Stayed!";
                     break;
                 }
-                case 1:
+                case STATUS_LOST_STOPPED:
                 {
                     crashStatusTextBox.ForeColor = Color.Tomato;
                     crashStatusTextBox.Text = "Stopped at " + checkpointMultipier + CRASH_MULTIPIER_PREFIX + "!";
                     break;
                 }
-                case 2:
+                case STATUS_PROFIT_STOPPED:
                 {
                     crashStatusTextBox.ForeColor = Color.SeaGreen;
                     crashStatusTextBox.Text = "Stopped at " + checkpointMultipier + CRASH_MULTIPIER_PREFIX;

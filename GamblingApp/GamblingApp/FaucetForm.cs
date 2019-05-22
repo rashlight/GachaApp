@@ -25,9 +25,9 @@ namespace GamblingApp
 
         private float rate = DEFAULT_RATE;
         private MainForm mainForm = null;
-        private List<PriceDictionary> priceLookup = new List<PriceDictionary>();
+        private readonly List<PriceDictionary> priceLookup = new List<PriceDictionary>();
         public int plusPrice = 1;
-        public static bool isPlaying;
+        public bool isPlaying;
         public bool isLarger = false;     
 
         public FaucetForm(Form callbackForm)
@@ -107,7 +107,10 @@ namespace GamblingApp
             PlusRateUpdateUI();
             foreach (var price in priceLookup)
             {
-                if (chosenNumber > price.Lowest && chosenNumber < price.Highest) MainForm.currentUser.Point += price.Price;
+                if (chosenNumber > price.Lowest && chosenNumber < price.Highest)
+                {
+                    MainForm.currentUser.Point += price.Price;
+                }             
             }
             mainForm.UpdateUserInfo();
             faucetRollButton.Enabled = true;

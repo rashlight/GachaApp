@@ -1,0 +1,460 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Anemonis.RandomOrg</name>
+    </assembly>
+    <members>
+        <member name="T:Anemonis.RandomOrg.Data.ApiKeyStatus">
+            <summary>The status of an API key.</summary>
+        </member>
+        <member name="F:Anemonis.RandomOrg.Data.ApiKeyStatus.Stopped">
+            <summary>The key is in stopped state.</summary>
+        </member>
+        <member name="F:Anemonis.RandomOrg.Data.ApiKeyStatus.Running">
+            <summary>The key is active.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.BlobParameters">
+            <summary>Encapsulates random BLOBs generation parameters.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.BlobParameters.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.BlobParameters" /> class.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.BlobParameters.Size">
+            <summary>Gets or sets the size of each blob, measured in bytes.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.DecimalFractionParameters">
+            <summary>Encapsulates random decimal fractions generation parameters.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.DecimalFractionParameters.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.DecimalFractionParameters" /> class.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.DecimalFractionParameters.DecimalPlaces">
+            <summary>Gets or sets the number of decimal places to use.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.DecimalFractionParameters.Replacement">
+            <summary>Gets or sets a value which specifies whether the random numbers should be picked with replacement.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.GaussianParameters">
+            <summary>Encapsulates random numbers from a Gaussian distribution generation parameters.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.GaussianParameters.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.GaussianParameters" /> class.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.GaussianParameters.Mean">
+            <summary>Gets or sets the distribution's mean.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.GaussianParameters.StandardDeviation">
+            <summary>Gets or sets the distribution's standard deviation.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.GaussianParameters.SignificantDigits">
+            <summary>Gets or sets the number of significant digits to use.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.IntegerParameters">
+            <summary>Encapsulates random integers generation parameters.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.IntegerParameters.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.IntegerParameters" /> class.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.IntegerParameters.Minimum">
+            <summary>Gets or sets the lower boundary for the range from which the random numbers will be picked.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.IntegerParameters.Maximum">
+            <summary>Gets or sets the upper boundary for the range from which the random numbers will be picked.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.IntegerParameters.Replacement">
+            <summary>Gets or sets a value which specifies whether the random numbers should be picked with replacement.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.IntegerSequenceParameters">
+            <summary>Encapsulates random integers generation parameters.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.IntegerSequenceParameters.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.IntegerSequenceParameters" /> class.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.IntegerSequenceParameters.Minimums">
+            <summary>Gets or sets a collection specifying the lower boundaries for the requested sequences.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.IntegerSequenceParameters.Maximums">
+            <summary>Gets or sets a collection specifying the upper boundaries for the requested sequences.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.IntegerSequenceParameters.Replacements">
+            <summary>Gets or sets a collection specifying for each requested sequence whether the random numbers in that sequence should be picked with replacement.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.RandomLicense">
+            <summary>Represents an object describing the license terms under which the random values given in the data can be used.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomLicense.Type">
+            <summary>Gets or sets license type.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomLicense.Text">
+            <summary>Gets or sets license description.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomLicense.InfoUrl">
+            <summary>Gets or sets an URL with license information.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.RandomObject`1">
+            <summary>Encapsulates the random objects and associated data.</summary>
+            <typeparam name="T">The type of random object.</typeparam>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomObject`1.CompletionTime">
+            <summary>Gets or sets the timestamp at which the operation was completed.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomObject`1.Data">
+            <summary>Gets or sets the sequence of objects requested.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.RandomParameters">
+            <summary>Encapsulates random data generation parameters.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.RandomResultObject`2">
+            <summary>Encapsulates random data generation result.</summary>
+            <typeparam name="TRandom">The type of random data container.</typeparam>
+            <typeparam name="TValue">The type of random object.</typeparam>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomResultObject`2.Random">
+            <summary>Gets the random objects and associated data.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomResultObject`2.BitsLeft">
+            <summary>Gets an integer containing the (estimated) number of remaining true random bits available to the client in the daily quota.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomResultObject`2.RequestsLeft">
+            <summary>Gets an integer containing the (estimated) number of remaining API requests available to the client in the daily quota.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomResultObject`2.BitsUsed">
+            <summary>Gets an integer containing the number of true random bits used to complete the operation.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.RandomResult`1">
+            <summary>Encapsulates random data generation result.</summary>
+            <typeparam name="T">The type of random object.</typeparam>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.RandomUsage">
+            <summary>Encapsulates information related to the usage of the current API key.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomUsage.Status">
+            <summary>Gets the API key's current status.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomUsage.BitsLeft">
+            <summary>Gets an integer containing the (estimated) number of remaining true random bits available to the client from the daily quota.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.RandomUsage.RequestsLeft">
+            <summary>Gets an integer containing the (estimated) number of remaining API requests available to the client from the daily quota.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.Random`1">
+            <summary>Encapsulates random objects and associated data.</summary>
+            <typeparam name="T">The type of random object.</typeparam>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.SignedRandomResult`2">
+            <summary>Encapsulates signed random data generation result.</summary>
+            <typeparam name="TValue">The type of random object.</typeparam>
+            <typeparam name="TParameters">The type of random parameters.</typeparam>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.SignedRandomResult`2.Signature">
+            <summary>Gets a SHA-512 digest of the JSON representation of a <see cref="T:Anemonis.RandomOrg.Data.SignedRandom`2"/> object, which has been signed with RANDOM.ORG's private key.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.SignedRandom`2">
+            <summary>Encapsulates signed random objects and associated data.</summary>
+            <typeparam name="TValue">The type of random object.</typeparam>
+            <typeparam name="TParameters">The type of random parameters.</typeparam>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.SignedRandom`2.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.SignedRandom`2" /> class.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.SignedRandom`2.Parameters">
+            <summary>Gets the random parameters.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.SignedRandom`2.ApiKeyHash">
+            <summary>Gets or sets the SHA-512 hash of the API key.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.SignedRandom`2.SerialNumber">
+            <summary>Gets or sets an integer containing the serial number associated with the random information.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.SignedRandom`2.UserData">
+            <summary>Gets or sets an optional string that is included into signed data from generation parameters.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.SignedRandom`2.License">
+            <summary>Gets an object describing the license terms under which the random values can be used.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.StringParameters">
+            <summary>Encapsulates random strings generation parameters.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.StringParameters.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.StringParameters" /> class.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.StringParameters.Length">
+            <summary>Gets or sets the length of each string.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.StringParameters.Characters">
+            <summary>Gets or sets a string that contains the set of characters that are allowed to occur in the random strings.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.Data.StringParameters.Replacement">
+            <summary>Gets or sets a value which specifies whether the random strings should be picked with replacement.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.Data.UuidParameters">
+            <summary>Encapsulates random UUIDs generation parameters.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.Data.UuidParameters.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.Data.UuidParameters" /> class.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.RandomOrgClient">
+            <summary>Represents RANDOM.ORG service client.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.#ctor(System.String,System.Net.Http.HttpMessageInvoker)">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.RandomOrgClient" /> class.</summary>
+            <param name="apiKey">The API key, which is used to track the true random bit usage for the client.</param>
+            <param name="httpInvoker">The component for sending HTTP requests.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="apiKey" /> is not of UUID format (32 digits separated by hyphens).</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="apiKey" /> or <paramref name="httpInvoker" /> is <see langword="null" />.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Anemonis.RandomOrg.RandomOrgClient" /> class.</summary>
+            <param name="apiKey">The API key, which is used to track the true random bit usage for the client.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="apiKey" /> is not of UUID format (32 digits separated by hyphens).</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="apiKey" /> is <see langword="null" />.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.Dispose">
+            <summary>Releases all resources used by the current instance of the <see cref="T:Anemonis.RandomOrg.RandomOrgClient" />.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GetUsageAsync(System.Threading.CancellationToken)">
+            <summary>Returns usage information of the current API key as an asynchronous operation.</summary>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is API key usage information.</returns>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.VerifySignatureAsync``2(Anemonis.RandomOrg.Data.SignedRandom{``0,``1},System.Byte[],System.Threading.CancellationToken)">
+            <summary>Verifies the signature of signed random objects and associated data as an asynchronous operation.</summary>
+            <typeparam name="TValue">The type of random object.</typeparam>
+            <typeparam name="TParameters">The type of random parameters.</typeparam>
+            <param name="random">The signed random objects and associated data.</param>
+            <param name="signature">The signature from the same response that the random data originates from.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a value, indicating if the random objects are authentic.</returns>
+            <exception cref="T:System.ArgumentException">Random data, or license type, or a random parameter is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="random" /> or <paramref name="signature" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="P:Anemonis.RandomOrg.RandomOrgClient.GenerateAdvisoryTime">
+            <summary>Gets the nearest allowed time in UTC for random values generation.</summary>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateIntegersAsync(System.Int32,System.Int32,System.Int32,System.Boolean,System.Threading.CancellationToken)">
+            <summary>Generates true random integers within a user-defined range as an asynchronous operation.</summary>
+            <param name="count">How many random integers to generate. Must be within the [1,10000] range.</param>
+            <param name="minimum">The lower boundary for the range from which the random numbers will be picked. Must be within the [-1000000000,1000000000] range.</param>
+            <param name="maximum">The upper boundary for the range from which the random numbers will be picked. Must be within the [-1000000000,1000000000] range.</param>
+            <param name="replacement">Specifies whether the random numbers should be picked with replacement.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" />, <paramref name="minimum" />, or <paramref name="maximum" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateIntegerSequencesAsync(System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyList{System.Boolean},System.Threading.CancellationToken)">
+            <summary>Generates true random integer sequences within a user-defined ranges as an asynchronous operation.</summary>
+            <param name="lengths">A collection specifying the lengths of the requested sequences. Each value must be within the [1,10000] range and the total sum of all the lengths must be in the [1,10000] range. The count of sequences must be within the [1,1000] range.</param>
+            <param name="minimums">A collection specifying the lower boundaries for the requested sequences. Each value must be within the [-1000000000,1000000000] range.</param>
+            <param name="maximums">A collection specifying the upper boundaries for the requested sequences. Each value must be within the [-1000000000,1000000000] range.</param>
+            <param name="replacements">A collection specifying for each requested sequence whether the random numbers in that sequence should be picked with replacement.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentException">Counts of argument arrays are different, sequences count is greater than 10, or total count is outside the [1,10000] range.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="lengths" />, <paramref name="minimums" />, <paramref name="maximums" />, or <paramref name="replacements" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">One of the values from the arguments <paramref name="lengths" />, <paramref name="minimums" />, or <paramref name="maximums" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateDecimalFractionsAsync(System.Int32,System.Int32,System.Boolean,System.Threading.CancellationToken)">
+            <summary>Generates true random decimal fractions from a uniform distribution across the [0,1] interval with a user-defined number of decimal places as an asynchronous operation.</summary>
+            <param name="count">How many random decimal fractions to generate. Must be within the [1,10000] range.</param>
+            <param name="decimalPlaces">The number of decimal places to use. Must be within the [1,20] range.</param>
+            <param name="replacement">Specifies whether the random numbers should be picked with replacement.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> or <paramref name="decimalPlaces" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateGaussiansAsync(System.Int32,System.Decimal,System.Decimal,System.Int32,System.Threading.CancellationToken)">
+            <summary>Generates true random numbers from a Gaussian distribution as an asynchronous operation.</summary>
+            <param name="count">How many random numbers to generate. Must be within the [1,10000] range.</param>
+            <param name="mean">The distribution's mean. Must be within the [-1000000,1000000] range.</param>
+            <param name="standardDeviation">The distribution's standard deviation. Must be within the [-1000000,1000000] range.</param>
+            <param name="significantDigits">The number of significant digits to use. Must be within the [2,20] range.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" />, <paramref name="mean" />, <paramref name="standardDeviation" />, or <paramref name="significantDigits" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateStringsAsync(System.Int32,System.Int32,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>Generates true random strings as an asynchronous operation.</summary>
+            <param name="count">How many random strings to generate. Must be within the [1,10000] range.</param>
+            <param name="length">The length of each string. Must be within the [1,20] range.</param>
+            <param name="characters">A string that contains the set of characters that are allowed to occur in the random strings. The maximum number of characters is 80.</param>
+            <param name="replacement">Specifies whether the random strings should be picked with replacement.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> or <paramref name="length" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="characters" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="characters" /> contains invalid number of characters .</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateUuidsAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Generates version 4 true random UUIDs in accordance with section 4.4 of RFC 4122 as an asynchronous operation.</summary>
+            <param name="count">How many random UUIDs to generate. Must be within the [1,1000] range.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateBlobsAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>Generates BLOBs containing true random data as an asynchronous operation.</summary>
+            <param name="count">How many random blobs to generate. Must be within the [1,100] range.</param>
+            <param name="size">The size of each blob, measured in bytes. Must be within the [1,131072] range. The total size of all blobs requested must not exceed 131072 bytes.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> or <paramref name="size" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateSignedIntegersAsync(System.Int32,System.Int32,System.Int32,System.Boolean,System.String,System.Threading.CancellationToken)">
+            <summary>Generates true random integers within a user-defined range with signature as an asynchronous operation.</summary>
+            <param name="count">How many random integers to generate. Must be within the [1,10000] range.</param>
+            <param name="minimum">The lower boundary for the range from which the random numbers will be picked. Must be within the [-1000000000,1000000000] range.</param>
+            <param name="maximum">The upper boundary for the range from which the random numbers will be picked. Must be within the [-1000000000,1000000000] range.</param>
+            <param name="replacement">Specifies whether the random numbers should be picked with replacement.</param>
+            <param name="userData">The optional string that will be included in unmodified form in the signed response along with the random data. The maximum number of characters is 1000.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.SignedRandomResult`2" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" />, <paramref name="minimum" />, or <paramref name="maximum" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateSignedIntegerSequencesAsync(System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyList{System.Boolean},System.String,System.Threading.CancellationToken)">
+            <summary>Generates true random integer sequences within a user-defined ranges with signature as an asynchronous operation.</summary>
+            <param name="lengths">A collection specifying the lengths of the requested sequences. Each value must be within the [1,10000] range and the total sum of all the lengths must be in the [1,10000] range. The count of sequences must be within the [1,1000] range.</param>
+            <param name="minimums">A collection specifying the lower boundaries for the requested sequences. Each value must be within the [-1000000000,1000000000] range.</param>
+            <param name="maximums">A collection specifying the upper boundaries for the requested sequences. Each value must be within the [-1000000000,1000000000] range.</param>
+            <param name="replacements">A collection specifying for each requested sequence whether the random numbers in that sequence should be picked with replacement.</param>
+            <param name="userData">The optional string that will be included in unmodified form in the signed response along with the random data. The maximum number of characters is 1000.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.RandomResult`1" /> instance.</returns>
+            <exception cref="T:System.ArgumentException">Counts of argument arrays are different, sequences count is greater than 10, or total count is outside the [1,10000] range.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="lengths" />, <paramref name="minimums" />, <paramref name="maximums" />, or <paramref name="replacements" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">One of the values from the arguments <paramref name="lengths" />, <paramref name="minimums" />, or <paramref name="maximums" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateSignedDecimalFractionsAsync(System.Int32,System.Int32,System.Boolean,System.String,System.Threading.CancellationToken)">
+            <summary>Generates true random decimal fractions from a uniform distribution across the [0,1] interval with a user-defined number of decimal places with signature as an asynchronous operation.</summary>
+            <param name="count">How many random decimal fractions to generate. Must be within the [1,10000] range.</param>
+            <param name="decimalPlaces">The number of decimal places to use. Must be within the [1,20] range.</param>
+            <param name="replacement">Specifies whether the random numbers should be picked with replacement.</param>
+            <param name="userData">The optional string that will be included in unmodified form in the signed response along with the random data. The maximum number of characters is 1000.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.SignedRandomResult`2" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> or <paramref name="decimalPlaces" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateSignedGaussiansAsync(System.Int32,System.Decimal,System.Decimal,System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>Generates true random numbers from a Gaussian distribution with signature as an asynchronous operation.</summary>
+            <param name="count">How many random numbers to generate. Must be within the [1,10000] range.</param>
+            <param name="mean">The distribution's mean. Must be within the [-1000000,1000000] range.</param>
+            <param name="standardDeviation">The distribution's standard deviation. Must be within the [-1000000,1000000] range.</param>
+            <param name="significantDigits">The number of significant digits to use. Must be within the [2,20] range.</param>
+            <param name="userData">The optional string that will be included in unmodified form in the signed response along with the random data. The maximum number of characters is 1000.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.SignedRandomResult`2" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" />, <paramref name="mean" />, <paramref name="standardDeviation" />, or <paramref name="significantDigits" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateSignedStringsAsync(System.Int32,System.Int32,System.String,System.Boolean,System.String,System.Threading.CancellationToken)">
+            <summary>Generates true random strings with signature as an asynchronous operation.</summary>
+            <param name="count">How many random strings to generate. Must be within the [1,10000] range.</param>
+            <param name="length">The length of each string. Must be within the [1,20] range.</param>
+            <param name="characters">A string that contains the set of characters that are allowed to occur in the random strings. The maximum number of characters is 80.</param>
+            <param name="replacement">Specifies whether the random strings should be picked with replacement.</param>
+            <param name="userData">The optional string that will be included in unmodified form in the signed response along with the random data. The maximum number of characters is 1000.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.SignedRandomResult`2" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> or <paramref name="length" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="characters" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="characters" /> contains invalid number of characters .</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateSignedUuidsAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>Generates version 4 true random UUIDs in accordance with section 4.4 of RFC 4122 with signature as an asynchronous operation.</summary>
+            <param name="count">How many random UUIDs to generate. Must be within the [1,1000] range.</param>
+            <param name="userData">The optional string that will be included in unmodified form in the signed response along with the random data. The maximum number of characters is 1000.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.SignedRandomResult`2" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="M:Anemonis.RandomOrg.RandomOrgClient.GenerateSignedBlobsAsync(System.Int32,System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>Generates BLOBs containing true random data with signature as an asynchronous operation.</summary>
+            <param name="count">How many random blobs to generate. Must be within the [1,100] range.</param>
+            <param name="size">The size of each blob, measured in bytes. Must be within the [1,131072] range. The total size of all blobs requested must not exceed 131072 bytes.</param>
+            <param name="userData">The optional string that will be included in unmodified form in the signed response along with the random data. The maximum number of characters is 1000.</param>
+            <param name="cancellationToken">The cancellation token for canceling the operation.</param>
+            <returns>A task that represents the asynchronous operation. The task result is a <see cref="T:Anemonis.RandomOrg.Data.SignedRandomResult`2" /> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count" /> or <paramref name="size" /> is outside the allowable range of values.</exception>
+            <exception cref="T:System.OperationCanceledException">The operation was canceled.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgClientException">An error occurred during processing RANDOM.ORG service method result.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgException">An error occurred during invocation of the RANDOM.ORG service method.</exception>
+            <exception cref="T:Anemonis.RandomOrg.RandomOrgProtocolException">An error occurred during communication with the RANDOM.ORG service.</exception>
+        </member>
+        <member name="T:Anemonis.RandomOrg.RandomOrgClientException">
+            <summary>Represents an error that occurs during processing RANDOM.ORG result.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.RandomOrgException">
+            <summary>Represents an error that occurs during invocation of a RANDOM.ORG service method.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.RandomOrgException.Method">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.RandomOrgException.Code">
+            <summary>Gets a number that indicates the error type that occurred.</summary>
+        </member>
+        <member name="T:Anemonis.RandomOrg.RandomOrgProtocolException">
+            <summary>Represents an error that occurs during communication with the RANDOM.ORG service.</summary>
+        </member>
+        <member name="P:Anemonis.RandomOrg.RandomOrgProtocolException.StatusCode">
+            <summary>Gets the status code of the HTTP response.</summary>
+        </member>
+    </members>
+</doc>

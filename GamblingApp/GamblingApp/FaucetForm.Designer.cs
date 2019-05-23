@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.priceListBox = new System.Windows.Forms.CheckedListBox();
             this.faucetRollButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.hundredThousandsPrefixTextBox = new System.Windows.Forms.TextBox();
@@ -41,33 +41,17 @@
             this.plusRateTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // checkedListBox1
+            // priceListBox
             // 
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "0 - 7500: 1gp",
-            "7501 - 25000 : 2gp",
-            "25001 - 60000: 3gp",
-            "60001 - 100000: 4gp",
-            "100001 - 300000: 7gp",
-            "300000 - 550000: 10gp",
-            "550001 - 725000: 15gp",
-            "725001 - 800000: 17gp",
-            "800001 - 900000: 20gp",
-            "900001 - 950000: 25gp",
-            "950001 - 975000: 30gp",
-            "975001 - 985000: 35gp",
-            "985001 - 990001: 45gp",
-            "990001 - 999999: 50gp",
-            "1000000: ???"});
-            this.checkedListBox1.Location = new System.Drawing.Point(37, 63);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(450, 234);
-            this.checkedListBox1.TabIndex = 21;
-            this.checkedListBox1.ThreeDCheckBoxes = true;
-            this.checkedListBox1.UseCompatibleTextRendering = true;
-            this.checkedListBox1.UseTabStops = false;
+            this.priceListBox.CheckOnClick = true;
+            this.priceListBox.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceListBox.Location = new System.Drawing.Point(37, 63);
+            this.priceListBox.Name = "priceListBox";
+            this.priceListBox.Size = new System.Drawing.Size(450, 234);
+            this.priceListBox.TabIndex = 21;
+            this.priceListBox.ThreeDCheckBoxes = true;
+            this.priceListBox.UseCompatibleTextRendering = true;
+            this.priceListBox.UseTabStops = false;
             // 
             // faucetRollButton
             // 
@@ -193,7 +177,7 @@
             this.ClientSize = new System.Drawing.Size(526, 477);
             this.Controls.Add(this.plusRateTextBox);
             this.Controls.Add(this.plusRateButton);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.priceListBox);
             this.Controls.Add(this.faucetRollButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.hundredThousandsPrefixTextBox);
@@ -213,7 +197,7 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox priceListBox;
         private System.Windows.Forms.Button faucetRollButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox hundredThousandsPrefixTextBox;

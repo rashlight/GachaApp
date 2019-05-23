@@ -7,8 +7,8 @@ namespace GamblingApp
 {
     public partial class CrashForm : Form
     {
-        private static readonly string START_AT_PREFIX = "Started at ";
         private static readonly string STOP_AT_PREFIX = "Stopped at ";
+        private static readonly string STAYED_PREFIX = "Stayed!";
         private static readonly string CRASH_MULTIPIER_PREFIX = "x";
         private const int STATUS_NEUTRAL = 0;
         private const int STATUS_LOST_STOPPED = 1;
@@ -56,19 +56,19 @@ namespace GamblingApp
                 case STATUS_NEUTRAL:
                 {
                     crashStatusTextBox.ForeColor = Color.Gray;
-                    crashStatusTextBox.Text = "Stayed!";
+                    crashStatusTextBox.Text = STAYED_PREFIX;
                     break;
                 }
                 case STATUS_LOST_STOPPED:
                 {
                     crashStatusTextBox.ForeColor = Color.Tomato;
-                    crashStatusTextBox.Text = "Stopped at " + checkpointMultipier + CRASH_MULTIPIER_PREFIX + "!";
+                    crashStatusTextBox.Text = STOP_AT_PREFIX + checkpointMultipier + CRASH_MULTIPIER_PREFIX + "!";
                     break;
                 }
                 case STATUS_PROFIT_STOPPED:
                 {
                     crashStatusTextBox.ForeColor = Color.SeaGreen;
-                    crashStatusTextBox.Text = "Stopped at " + checkpointMultipier + CRASH_MULTIPIER_PREFIX;
+                    crashStatusTextBox.Text = STOP_AT_PREFIX + checkpointMultipier + CRASH_MULTIPIER_PREFIX;
                     break;
                 }
                 default:

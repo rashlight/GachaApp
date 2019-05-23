@@ -86,13 +86,12 @@
             // 
             // bonusColorListBox
             // 
-            this.bonusColorListBox.FormattingEnabled = true;
             this.bonusColorListBox.ItemHeight = 16;
             this.bonusColorListBox.Location = new System.Drawing.Point(12, 77);
             this.bonusColorListBox.Name = "bonusColorListBox";
-            this.bonusColorListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.bonusColorListBox.Size = new System.Drawing.Size(266, 164);
             this.bonusColorListBox.TabIndex = 19;
+            this.bonusColorListBox.SelectedIndexChanged += new System.EventHandler(this.bonusColorListBox_SelectedIndexChanged);
             // 
             // textBox7
             // 
@@ -104,7 +103,7 @@
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(544, 25);
             this.textBox7.TabIndex = 20;
-            this.textBox7.Text = "Bet on these colors to get maximum 2x multiplier!";
+            this.textBox7.Text = "Bet on these colors to multiplied by 1.5x reward!";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rollColorButton
@@ -114,7 +113,7 @@
             this.rollColorButton.Name = "rollColorButton";
             this.rollColorButton.Size = new System.Drawing.Size(272, 40);
             this.rollColorButton.TabIndex = 26;
-            this.rollColorButton.Text = "Roll! (2x)";
+            this.rollColorButton.Text = "Roll!";
             this.rollColorButton.UseVisualStyleBackColor = true;
             this.rollColorButton.Click += new System.EventHandler(this.rollColorButton_Click);
             // 
@@ -361,7 +360,12 @@
             this.multiplierNumeric.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic);
             this.multiplierNumeric.Location = new System.Drawing.Point(465, 246);
             this.multiplierNumeric.Maximum = new decimal(new int[] {
-            127,
+            255,
+            0,
+            0,
+            0});
+            this.multiplierNumeric.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -369,6 +373,11 @@
             this.multiplierNumeric.ReadOnly = true;
             this.multiplierNumeric.Size = new System.Drawing.Size(89, 32);
             this.multiplierNumeric.TabIndex = 49;
+            this.multiplierNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.multiplierNumeric.ValueChanged += new System.EventHandler(this.multiplierNumeric_ValueChanged);
             // 
             // ColorPicker

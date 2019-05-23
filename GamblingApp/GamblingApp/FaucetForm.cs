@@ -38,8 +38,9 @@ namespace GamblingApp
             priceLookup.Add(new PriceDictionary(0, 7500, 1));
             priceLookup.Add(new PriceDictionary(7501, 25000, 2));
             priceLookup.Add(new PriceDictionary(25001, 60000, 3));
-            priceLookup.Add(new PriceDictionary(60001, 100001, 4));
-            priceLookup.Add(new PriceDictionary(100001, 350000, 7));
+            priceLookup.Add(new PriceDictionary(60001, 100000, 4));
+            priceLookup.Add(new PriceDictionary(100001, 225000, 6));
+            priceLookup.Add(new PriceDictionary(225001, 350000, 8));
             priceLookup.Add(new PriceDictionary(350000, 550000, 10));
             priceLookup.Add(new PriceDictionary(500001, 725000, 15));
             priceLookup.Add(new PriceDictionary(725001, 800000, 17));
@@ -49,8 +50,12 @@ namespace GamblingApp
             priceLookup.Add(new PriceDictionary(975001, 985000, 35));
             priceLookup.Add(new PriceDictionary(985001, 990000, 45));
             priceLookup.Add(new PriceDictionary(990000, 999999, 50));
-            priceLookup.Add(new PriceDictionary(999999, int.MaxValue, 50));
+            priceLookup.Add(new PriceDictionary(999999, int.MaxValue, 100));
             #endregion
+            foreach (PriceDictionary pd in priceLookup)
+            {
+                priceListBox.Items.Add(pd.Lowest + " - " + pd.Highest + ": " + pd.Price + "gp");
+            }
             PlusRateUpdateUI();
         }
 

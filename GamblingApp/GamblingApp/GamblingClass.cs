@@ -65,6 +65,7 @@ namespace GamblingApp
         }
     }
 
+    //Thanks to https://tekeye.uk/visual_studio/encrypt-decrypt-c-sharp-string
     public static class Encrypt
     {
         // This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be

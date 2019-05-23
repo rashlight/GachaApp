@@ -16,33 +16,35 @@ namespace GamblingApp
         public static readonly string COLOR_ACCURACY_PREFIX = "∓";
         public static readonly string MULTIPLIER_PREFIX = "x";
 
-        public float betMultiplier = 1f;
+        public float maxMultiplier = 1f;
         public bool isPlaying;
         public bool isColorPicked;
         public bool isPlayerColorSpecial;
+        private float betMultiplier = 1f;
         private MainForm mainForm;
 
         public ColorPicker(Form callbackForm)
         {
             mainForm = callbackForm as MainForm;
             InitializeComponent();
-            multiplierNumeric.Value = 0m;
         }
-
+        private void ApplyMultiplier()
+        {
+            betMultiplier = (float)Math.Round((decimal)maxMultiplier / (multiplierNumeric.Value / 255m) / 1.5m, 2);
+            rollColorButton.Text = "Roll! (" + betMultiplier + "x)";
+        }
         private void ChangeDefaultPlayerBackColor()
         {
             redPlayerColorBox.ForeColor = Color.AntiqueWhite;
             greenPlayerColorBox.ForeColor = Color.AntiqueWhite;
             bluePlayerColorBox.ForeColor = Color.AntiqueWhite;
         }
-
         private void ChangeDefaultChosenBackColor()
         {
             redChosenColorBox.ForeColor = Color.AntiqueWhite;
             greenChosenColorBox.ForeColor = Color.AntiqueWhite;
             blueChosenColorBox.ForeColor = Color.AntiqueWhite;
         }
-
         private void CheckColorMultiplier()
         {
             Color color = Color.Empty;
@@ -50,43 +52,65 @@ namespace GamblingApp
             for (int i = 27; i <= 167; i++) //27 = Transparent, 167 = YellowGreen, taken from KnownColor enum.
             {
                 color = Color.FromKnownColor((KnownColor)i);
-                if (playerColorBox.BackColor == color && !isPlayerColorSpecial)
+                if (playerColorBox.BackColor == color)
                 {
-                    betMultiplier += 1f;
-                    isPlayerColorSpecial = !isPlayerColorSpecial;
-                    rollColorButton.Text = "Roll! (" + betMultiplier + "x)";
+                    if (!isPlayerColorSpecial)
+                    {
+                        maxMultiplier *= 1.5f;
+                        isPlayerColorSpecial = !isPlayerColorSpecial;
+                    }
                     return;
-                }                
+                }
             }
             
             if (isPlayerColorSpecial)
             {
-                betMultiplier -= 1f;
+                maxMultiplier /= 1.5f;
                 isPlayerColorSpecial = !isPlayerColorSpecial;
-                rollColorButton.Text = "Roll! (" + betMultiplier + "x)";
             } 
         }
-
-        private void ChooseColor()
+        private void ChooseRedColor()
         {
-            Color color = Color.FromArgb(GamblingClass.Random(0, 0, 255), GamblingClass.Random(0, 0, 255), GamblingClass.Random(0, 0, 255));
+            int redColor = GamblingClass.Random(0, 0, 255);
 
-            chosenColorBox.BackColor = color;
+            redChosenColorBox.BackColor = Color.FromArgb(redColor, 100, 100);
+            redChosenColorBox.Text = redColor.ToString();
+            redAccuracyTextBox.Text = (redPlayerColorBox.BackColor.R - redColor).ToString();
 
-            colorAccuracyTextBox.Text = Math.Round((Math.Abs(colorDialog.Color.R - color.R) + Math.Abs(colorDialog.Color.G - color.G) + Math.Abs(colorDialog.Color.B - color.B)) / 3d, 0).ToString();
+            colorAccuracyTextBox.Text = GamblingClass.Random(0, 0, 255).ToString();
+        }
+        private void ChooseGreenColor()
+        {
+            int greenColor = GamblingClass.Random(0, 0, 255);
 
-            redChosenColorBox.BackColor = Color.FromArgb(color.R, 100, 100);
-            greenChosenColorBox.BackColor = Color.FromArgb(100, color.G, 100);
-            blueChosenColorBox.BackColor = Color.FromArgb(100, 100, color.B);
+            greenChosenColorBox.BackColor = Color.FromArgb(100, 100, greenColor);
+            greenChosenColorBox.Text = greenColor.ToString();
+            greenAccuracyTextBox.Text = (greenPlayerColorBox.BackColor.R - greenColor).ToString();
 
-            redChosenColorBox.Text = color.R.ToString();
-            greenChosenColorBox.Text = color.G.ToString();
-            blueChosenColorBox.Text = color.B.ToString();
+            colorAccuracyTextBox.Text = GamblingClass.Random(0, 0, 255).ToString();
+        }
+        private void ChooseBlueColor()
+        {
+            int blueColor = GamblingClass.Random(0, 0, 255);
 
-            redAccuracyTextBox.Text = (redPlayerColorBox.BackColor.R - redChosenColorBox.BackColor.R).ToString();
-            greenAccuracyTextBox.Text = (greenPlayerColorBox.BackColor.G - greenChosenColorBox.BackColor.G).ToString();
-            blueAccuracyTextBox.Text = (bluePlayerColorBox.BackColor.B - blueChosenColorBox.BackColor.B).ToString();
+            blueChosenColorBox.BackColor = Color.FromArgb(blueColor, 100, 100);
+            blueChosenColorBox.Text = blueColor.ToString();
+            blueAccuracyTextBox.Text = (bluePlayerColorBox.BackColor.B - blueColor).ToString();
 
+            colorAccuracyTextBox.Text = GamblingClass.Random(0, 0, 255).ToString();
+        }      
+        private void FinalizeColor()
+        {
+            int redChosenColor = int.Parse(redChosenColorBox.Text);
+            int greenChosenColor = int.Parse(greenChosenColorBox.Text);
+            int blueChosenColor = int.Parse(blueChosenColorBox.Text);
+
+            colorAccuracyTextBox.Text = Math.Round((
+                Math.Abs(Convert.ToInt32(redAccuracyTextBox.Text)) 
+                + Math.Abs(Convert.ToInt32(greenAccuracyTextBox.Text)) 
+                + Math.Abs(Convert.ToInt32(blueAccuracyTextBox.Text))) / 3d, 0).ToString();
+
+            chosenColorBox.BackColor = Color.FromArgb(255, redChosenColor, greenChosenColor, blueChosenColor);
         }
 
         private void ColorPicker_Load(object sender, EventArgs e)
@@ -96,10 +120,10 @@ namespace GamblingApp
             for (int i = 27; i <= 167; i++) //27 = Transparent, 167 = YellowGreen, taken from KnownColor enum.
             {
                 color = Color.FromKnownColor((KnownColor) i);
+                if (color.A != 255) continue;
                 bonusColorListBox.Items.Add(color.Name + ": (" + color.R + ", " + color.G + ", " + color.B + ")");
             }
         }
-
         private void pickColorButton_Click(object sender, EventArgs e)
         {
             colorDialog.ShowDialog();
@@ -114,8 +138,8 @@ namespace GamblingApp
 
             ChangeDefaultPlayerBackColor();
             CheckColorMultiplier();
+            ApplyMultiplier();
         }
-
         private async void rollColorButton_Click(object sender, EventArgs e)
         {
             if (!isColorPicked)
@@ -145,11 +169,22 @@ namespace GamblingApp
             isPlaying = true;
             while (isPlaying)
             {               
-                for (int i = 0; i <= GamblingClass.Random(0, 100, 200); i++)
+                for (int i = 0; i <= GamblingClass.Random(0, 50, 100); i++)
                 {
-                    ChooseColor();
+                    ChooseRedColor();
                     await Task.Delay(5).ConfigureAwait(true);
                 }
+                for (int i = 0; i <= GamblingClass.Random(0, 60, 120); i++)
+                {
+                    ChooseGreenColor();
+                    await Task.Delay(5).ConfigureAwait(true);
+                }
+                for (int i = 0; i <= GamblingClass.Random(0, 70, 140); i++)
+                {
+                    ChooseBlueColor();
+                    await Task.Delay(5).ConfigureAwait(true);
+                }
+                FinalizeColor();
                 isPlaying = false;
             }
 
@@ -169,17 +204,10 @@ namespace GamblingApp
             rollColorButton.Enabled = true;
             pickColorButton.Enabled = true;
         }
-
         private void multiplierNumeric_ValueChanged(object sender, EventArgs e)
         {
-            betMultiplier = (float)Math.Round(1.0m + (1.0m - multiplierNumeric.Value / 255m), 2);
-            if (isPlayerColorSpecial)
-            {
-                betMultiplier += 1f;
-            }
-            rollColorButton.Text = "Roll! (" + betMultiplier + "x)";
+            ApplyMultiplier();
         }
-
         private void ColorPicker_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isPlaying)
@@ -191,6 +219,30 @@ namespace GamblingApp
 
                 }
             }
+        }
+        private void bonusColorListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            isColorPicked = true;
+
+            int plusNum = 27;
+            while (Color.FromKnownColor((KnownColor)bonusColorListBox.SelectedIndex + 1 + plusNum).A != 255)
+            {
+                plusNum++;
+            }
+            playerColorBox.BackColor = Color.FromKnownColor((KnownColor)bonusColorListBox.SelectedIndex + 1 + plusNum);
+
+            redPlayerColorBox.BackColor = Color.FromArgb(255, playerColorBox.BackColor.R, 100, 100);
+            redPlayerColorBox.Text = playerColorBox.BackColor.R.ToString();
+
+            greenPlayerColorBox.BackColor = Color.FromArgb(255, 100, playerColorBox.BackColor.G, 100);
+            greenPlayerColorBox.Text = playerColorBox.BackColor.G.ToString();
+
+            bluePlayerColorBox.BackColor = Color.FromArgb(255, 100, 100, playerColorBox.BackColor.B);
+            bluePlayerColorBox.Text = playerColorBox.BackColor.B.ToString();
+
+            CheckColorMultiplier();
+            ApplyMultiplier();
+            ChangeDefaultPlayerBackColor();
         }
     }
 }

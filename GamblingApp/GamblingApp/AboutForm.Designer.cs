@@ -42,9 +42,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(201, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 40);
+            this.label1.Size = new System.Drawing.Size(255, 40);
             this.label1.TabIndex = 0;
-            this.label1.Text = "GamblingApp";
+            this.label1.Text = "Gambling App";
             // 
             // label2
             // 
@@ -98,7 +98,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "AboutForm";
-            this.Text = "About GamblingApp...";
+            this.Text = "About Gambling App...";
             this.ResumeLayout(false);
             this.PerformLayout();
 

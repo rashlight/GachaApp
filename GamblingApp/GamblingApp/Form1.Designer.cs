@@ -68,7 +68,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(622, 28);
+            this.menuStrip.Size = new System.Drawing.Size(622, 26);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -80,7 +80,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(42, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(42, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -89,13 +89,13 @@
             this.gamblingAppFileToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.newToolStripMenuItem.Text = "New...";
             // 
             // gamblingAppFileToolStripMenuItem
             // 
             this.gamblingAppFileToolStripMenuItem.Name = "gamblingAppFileToolStripMenuItem";
-            this.gamblingAppFileToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.gamblingAppFileToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.gamblingAppFileToolStripMenuItem.Text = "GamblingApp File...";
             this.gamblingAppFileToolStripMenuItem.Click += new System.EventHandler(this.gamblingAppFileToolStripMenuItem_Click);
             // 
@@ -103,20 +103,20 @@
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(213, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.exitToolStripMenuItem.Text = "Exit...";
             // 
             // optionToolStripMenuItem
@@ -125,7 +125,7 @@
             this.randomizerToolStripMenuItem,
             this.colorTemplateToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(62, 22);
             this.optionToolStripMenuItem.Text = "Option";
             // 
             // randomizerToolStripMenuItem
@@ -133,19 +133,19 @@
             this.randomizerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ordinaryToolStripMenuItem});
             this.randomizerToolStripMenuItem.Name = "randomizerToolStripMenuItem";
-            this.randomizerToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.randomizerToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.randomizerToolStripMenuItem.Text = "Randomizer";
             // 
             // ordinaryToolStripMenuItem
             // 
             this.ordinaryToolStripMenuItem.Name = "ordinaryToolStripMenuItem";
-            this.ordinaryToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ordinaryToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.ordinaryToolStripMenuItem.Text = "Ordinary...";
             // 
             // colorTemplateToolStripMenuItem
             // 
             this.colorTemplateToolStripMenuItem.Name = "colorTemplateToolStripMenuItem";
-            this.colorTemplateToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.colorTemplateToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.colorTemplateToolStripMenuItem.Text = "Color Template...";
             // 
             // helpToolStripMenuItem
@@ -153,7 +153,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(50, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -344,7 +344,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "GamblingApp";
+            this.Text = "Gambling App";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

@@ -1,4 +1,4 @@
-# Gambling App
+# Gacha App
 Some games I've been making in my spare time, mostly about randomness.
 
 ## Installing

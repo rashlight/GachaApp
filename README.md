@@ -1,7 +1,7 @@
 # Gacha App
 Some games I've been making in my spare time, mostly about randomness.
 
-## Installing
+## Releases
 Download the binaries [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/rashlight/GamblingApp/tree/master/Binaries).
 You'll need .NET 4.6 framework for this to work, downloads [here](https://www.microsoft.com/en-us/download/details.aspx?id=49982)
 

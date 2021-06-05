@@ -60,7 +60,7 @@
             // 
             // menuStrip
             // 
-            this.menuStrip.Font = new System.Drawing.Font("Roboto Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -80,7 +80,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(45, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -89,13 +89,13 @@
             this.GachaAppFileToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.newToolStripMenuItem.Text = "New...";
             // 
             // GachaAppFileToolStripMenuItem
             // 
             this.GachaAppFileToolStripMenuItem.Name = "GachaAppFileToolStripMenuItem";
-            this.GachaAppFileToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.GachaAppFileToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.GachaAppFileToolStripMenuItem.Text = "GachaApp File...";
             this.GachaAppFileToolStripMenuItem.Click += new System.EventHandler(this.GachaAppFileToolStripMenuItem_Click);
             // 
@@ -103,20 +103,20 @@
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(182, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.exitToolStripMenuItem.Text = "Exit...";
             // 
             // optionToolStripMenuItem
@@ -125,7 +125,7 @@
             this.randomizerToolStripMenuItem,
             this.colorTemplateToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(64, 22);
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
             this.optionToolStripMenuItem.Text = "Option";
             // 
             // randomizerToolStripMenuItem
@@ -133,19 +133,19 @@
             this.randomizerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ordinaryToolStripMenuItem});
             this.randomizerToolStripMenuItem.Name = "randomizerToolStripMenuItem";
-            this.randomizerToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.randomizerToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.randomizerToolStripMenuItem.Text = "Randomizer";
             // 
             // ordinaryToolStripMenuItem
             // 
             this.ordinaryToolStripMenuItem.Name = "ordinaryToolStripMenuItem";
-            this.ordinaryToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.ordinaryToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.ordinaryToolStripMenuItem.Text = "Ordinary...";
             // 
             // colorTemplateToolStripMenuItem
             // 
             this.colorTemplateToolStripMenuItem.Name = "colorTemplateToolStripMenuItem";
-            this.colorTemplateToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.colorTemplateToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.colorTemplateToolStripMenuItem.Text = "Color Template...";
             // 
             // helpToolStripMenuItem
@@ -161,23 +161,23 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(164, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.aboutToolStripMenuItem.Text = "About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(70, 74);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(110, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(494, 23);
+            this.label2.Size = new System.Drawing.Size(429, 25);
             this.label2.TabIndex = 12;
             this.label2.Text = "Open a save file to continue. Or create new one!";
             // 
             // openSaveFileButton
             // 
-            this.openSaveFileButton.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openSaveFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openSaveFileButton.Location = new System.Drawing.Point(74, 113);
             this.openSaveFileButton.Name = "openSaveFileButton";
             this.openSaveFileButton.Size = new System.Drawing.Size(184, 53);
@@ -188,7 +188,7 @@
             // 
             // createsaveFileButton
             // 
-            this.createsaveFileButton.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createsaveFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createsaveFileButton.Location = new System.Drawing.Point(298, 113);
             this.createsaveFileButton.Name = "createsaveFileButton";
             this.createsaveFileButton.Size = new System.Drawing.Size(266, 53);
@@ -201,10 +201,10 @@
             // 
             this.GachaPointTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.GachaPointTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GachaPointTextBox.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GachaPointTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GachaPointTextBox.Location = new System.Drawing.Point(12, 203);
             this.GachaPointTextBox.Name = "GachaPointTextBox";
-            this.GachaPointTextBox.Size = new System.Drawing.Size(598, 21);
+            this.GachaPointTextBox.Size = new System.Drawing.Size(598, 20);
             this.GachaPointTextBox.TabIndex = 15;
             this.GachaPointTextBox.Text = "Gacha Point:";
             this.GachaPointTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -214,10 +214,10 @@
             // 
             this.userNameTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.userNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.userNameTextBox.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameTextBox.Location = new System.Drawing.Point(12, 182);
             this.userNameTextBox.Name = "userNameTextBox";
-            this.userNameTextBox.Size = new System.Drawing.Size(598, 21);
+            this.userNameTextBox.Size = new System.Drawing.Size(598, 20);
             this.userNameTextBox.TabIndex = 14;
             this.userNameTextBox.Text = "Username:";
             this.userNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -227,7 +227,7 @@
             // 
             this.gameModeListBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gameModeListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gameModeListBox.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameModeListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameModeListBox.FormattingEnabled = true;
             this.gameModeListBox.ItemHeight = 22;
             this.gameModeListBox.Location = new System.Drawing.Point(12, 241);
@@ -314,10 +314,10 @@
             // 
             this.welcomeTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.welcomeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.welcomeTextBox.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeTextBox.Location = new System.Drawing.Point(12, 34);
+            this.welcomeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeTextBox.Location = new System.Drawing.Point(10, 37);
             this.welcomeTextBox.Name = "welcomeTextBox";
-            this.welcomeTextBox.Size = new System.Drawing.Size(598, 37);
+            this.welcomeTextBox.Size = new System.Drawing.Size(598, 34);
             this.welcomeTextBox.TabIndex = 24;
             this.welcomeTextBox.Text = "Welcome back!";
             this.welcomeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
